@@ -1,14 +1,19 @@
 let product = require("../models/productModel");
 
 let getProducts = async (req, resp)=>{
-    let page = Number(req.query.page);
-  let limit = Number(req.query.limit);
+  
+  let page;
+  let limit;
 
-  if (page == 0) {
+  if (req.query.page==undefined) {
     page = 1;
+  } else {
+    page = Number(req.query.page);
   }
-  if (limit == 0) {
-    limit = 1;
+  if (req.query.limit==undefined) {
+    limit = 8;
+  } else {
+    limit = Number(req.query.limit);
   }
 
   let skip = (page - 1) * limit;
@@ -16,7 +21,7 @@ let getProducts = async (req, resp)=>{
   resp.status(200).send(
     await product
       .find({}, { __v: 0, _id: 0 })
-      .sort([["updated_date", -1]])
+      // .sort([["updated_date", -1]])
       .skip(skip)
       .limit(limit)
   );
@@ -73,4 +78,18 @@ let updateProduct = async (req, resp)=>{
         resp.status(500).send("Something went wrong!");
       }
 };
-module.exports = {getProducts, saveProduct, deleteProduct, updateProduct}
+
+let getProductsCount = async (req, resp) =>{
+
+  try {
+    let productCount = await product.find({}).count();
+    resp.status(200).send({
+      count:productCount
+    });
+  } catch(error) {
+    console.log(error);
+    resp.status(500).send("Something went wrong");
+  }
+
+}
+module.exports = {getProducts, saveProduct, deleteProduct, updateProduct, getProductsCount}

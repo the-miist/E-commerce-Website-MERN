@@ -78,7 +78,10 @@ let login = async (req, resp) => {
         let token = jwt.sign({ username: dbUser.username, role: dbUser.role }, "NodeJsRestApi", {
           expiresIn: "5h",
         });
-        resp.status(201).send(token);
+        resp.status(201).send({
+          "token":token,
+          "role": dbUser.role
+        });
       } else {
         resp.status(401).send("User not authenticated");
       }

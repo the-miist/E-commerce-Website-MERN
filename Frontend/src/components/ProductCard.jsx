@@ -16,7 +16,16 @@ export default function ProductCard(props) {
       <ListGroup className="list-group-flush">
         <ListGroup.Item>Category: {props.details.category}</ListGroup.Item>
         <ListGroup.Item>Price: ${props.details.price}</ListGroup.Item>
-        <ListGroup.Item><Button variant="warning" style={{width:"100%"}}>Add to cart</Button></ListGroup.Item>
+        <ListGroup.Item><Button variant="warning" style={{width:"100%"}}
+        onClick={()=>{
+          if(localStorage.getItem("token")) {
+
+          } else {
+            navigate("/login")
+          }
+        }}
+        
+        >Add to cart</Button></ListGroup.Item>
       </ListGroup>
     </Card>
     )

@@ -17,8 +17,14 @@ export default function Navigation() {
           >
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/products">Products</Nav.Link>
-            <Nav.Link as={Link} to="/register">Register</Nav.Link>
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+
+            {
+              localStorage.getItem("token") ? <Nav.Link as={Link} onClick={()=>{
+                localStorage.clear();
+                window.location.href="http://localhost:5173/products";
+              }}>Logout</Nav.Link> : <Nav.Link as={Link} to="/login">Login</Nav.Link>
+            }
+            
           </Nav>
             <div className="d-flex">
                 <CartPlus as={Button} color='white' size="40"/>
