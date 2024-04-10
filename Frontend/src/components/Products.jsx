@@ -53,28 +53,42 @@ const Products = () => {
           <Loader />
         )}
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+
+      
         <Button
-          style={{ width: "45%", margin: "2%" }}
+          style={{
+            border: "1px solid white",
+            backgroundColor: "#0d6efd",
+            color: "white",
+            width: "50%",
+            fontSize: "20px",
+          }}
           onClick={() => {
             if (page > 1) {
               setPage(page - 1);
             }
           }}
         >
-          {"<"} Previous
+          Previous
         </Button>
         <Button
-          style={{ width: "45%", margin: "2%" }}
+          style={{
+            border: "1px solid white",
+            backgroundColor: "#0d6efd",
+            color: "white",
+            width: "50%",
+            fontSize: "20px",
+          }}
           onClick={() => {
-            if (page < count / limit) {
+            console.log("Hello")
+            if (page < count) {
               setPage(page + 1);
             }
           }}
         >
-          Next {">"}
+          Next
         </Button>
-      </div>
+   
     </>
   );
 };

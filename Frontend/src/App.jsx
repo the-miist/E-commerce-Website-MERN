@@ -8,6 +8,7 @@ import Products from './components/Products'
 import NotFound from './components/NotFound'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import AddProduct from './components/AddProduct'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/products" element={<Products/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/addproduct" element={<AddProduct/>}/>
             <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>

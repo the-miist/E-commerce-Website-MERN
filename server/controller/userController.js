@@ -79,6 +79,11 @@ let login = async (req, resp) => {
           expiresIn: "5h",
         });
         resp.status(201).send({
+          "id":dbUser.id,
+          "username":dbUser.username,
+          "phone":dbUser.phone,
+          "cart":dbUser.productsInCart,
+          "products":dbUser.products,
           "token":token,
           "role": dbUser.role
         });

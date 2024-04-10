@@ -20,6 +20,10 @@ export default function Login() {
           id:email,
           password:password
         });
+        console.log(response);
+        localStorage.setItem("id",response.data.id);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("role", response.data.role);
         localStorage.setItem("token", response.data.token);
         toast.success("Logged in succesfully");
         window.location.href="http://localhost:5173/products";

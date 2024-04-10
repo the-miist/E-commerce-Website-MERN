@@ -7,15 +7,9 @@ export default function Home() {
       <div>
       <main className="hero_wrapper">
         <section className="section_right_hero">
-          <p>new Arrival</p>
           <h2>
            Welcome to <br /> ITV mart
           </h2>
-          <div className="productSpecs d-flex flex-column">
-            <span>casual Line</span>
-            <span>Nylon Fabric</span>
-            <span>Fresh color</span>
-          </div>
           <button className="btn bg-white border-bottom border-dark w-50">
             Discover More
           </button>
